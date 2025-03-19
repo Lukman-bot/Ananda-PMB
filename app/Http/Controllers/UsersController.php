@@ -59,4 +59,47 @@ class UsersController extends Controller
                 ->make(true);
         }
     }
+
+    public function save(Request $request)
+    {
+        $id = $request->get('id');
+
+        // Validasi Email
+        $emailExists = $this->model->where('alamat_email', $request->get('alamat_email'));
+        if ($id) $emailExists->where('id_users', '!=', $id);
+        if ($emailExists->exists()) return response()->json(['status' => 'Alamat email sudah digunakan, silakan gunakan email lain'], 400);
+
+        $validate['full_name'] = $request->get('full_name');
+        $validate['alamat_email'] = $request->get('alamat_email');
+        $validate['id_role'] = (string)$request->get('id_role');
+
+        if ($request->get('password')) {
+            $validate['password'] = Hash::make($request->get('password'));
+        }
+
+        if ($id == null) {
+            $validate['created_at'] = now();
+
+            $this->model->create($validate);
+            return response()->json(['status' => 'Data Berhasil Ditambahkan']);
+        } else {
+            $validate['updated_at'] = now();
+
+            $this->model->where('id_users', $id)->update($validate);
+            return response()->json(['status' => 'Data Berhasil Diperbarui']);
+        }
+    }
+
+    public function reqData($id)
+    {
+        $data = $this->model->find($id);
+        echo json_encode($data);
+    }
+
+    public function delete(Request $request)
+    {
+        $this->model->where('id_users', $request->get('id'))->delete();
+
+        return response()->json(['status' => 'oke']);
+    }
 }

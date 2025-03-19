@@ -1,6 +1,10 @@
 @extends('layout.template')
 @section('content')
+<!-- Partial Component For Data Pengguna -->
 @include('pengguna.component.javascript.datatable')
+@include('pengguna.component.javascript.crud')
+@include('pengguna.component.modal.form')
+<!-- End Partial Component For Data Pengguna -->
 <div class="row">
     <div class="col-lg-8">
         <div id="flashdata"></div>

@@ -22,6 +22,9 @@ Route::middleware(SessionAuth::class)->group(function () {
     Route::group(['prefix' => 'pengguna'], function() {
         Route::get('/', [UsersController::class, 'index'])->name('pengguna.index');
         Route::post('/listData', [UsersController::class, 'listData'])->name('pengguna.listData');
+        Route::post('/', [UsersController::class, 'save']);
+        Route::get('/reqdata/{id}', [UsersController::class, 'reqData']);
+        Route::post('/delete', [UsersController::class, 'delete']);
     });
     // End Route For Data Pengguna
 
