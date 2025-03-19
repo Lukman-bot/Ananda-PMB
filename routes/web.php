@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Middleware\SessionAuth;
 use App\Http\Controllers\AuthController;
+use App\Http\Controllers\DashboardController;
 
 // Route For Login
 Route::get('/', [AuthController::class, 'index']);
