@@ -16,4 +16,8 @@ Route::middleware(SessionAuth::class)->group(function () {
     // Route For Dashboard
     Route::get('/dashboard', [DashboardController::class, 'index']);
     // End Route For Dashboard
+
+    // Route For Logout
+    Route::post('/logout', [AuthController::class, 'logout']);
+    // End Route For Logout
 });
