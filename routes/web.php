@@ -5,6 +5,8 @@ use App\Http\Middleware\SessionAuth;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
+use App\Http\Controllers\ProgramStudiController;
+use App\Http\Controllers\FakultasController;
 
 // Route For Login
 Route::get('/', [AuthController::class, 'index']);
@@ -27,6 +29,25 @@ Route::middleware(SessionAuth::class)->group(function () {
         Route::post('/delete', [UsersController::class, 'delete']);
     });
     // End Route For Data Pengguna
+
+    // Route For Program Studi
+    Route::group(['prefix' => 'prodi'], function() {
+        Route::get('/', [ProgramStudiController::class, 'index']);
+        Route::post('/listData', [ProgramStudiController::class, 'listData'])->name('prodi.listData');
+        Route::post('/', [ProgramStudiController::class, 'save']);
+        Route::get('/reqdata/{id}', [ProgramStudiController::class, 'reqData']);
+        Route::post('/delete', [ProgramStudiController::class, 'delete']);
+    });
+    // End Route For Program Studi
+
+    // Route For Fakultas
+    Route::group(['prefix' => 'fakultas'], function() {
+        Route::post('/listData', [FakultasController::class, 'listData'])->name('fakultas.listData');
+        Route::post('/', [FakultasController::class, 'save']);
+        Route::get('/reqdata/{id}', [FakultasController::class, 'reqData']);
+        Route::post('/delete', [FakultasController::class, 'delete']);
+    });
+    // End Route For Fakultas
 
     // Route For Logout
     Route::post('/logout', [AuthController::class, 'logout']);

@@ -15,5 +15,13 @@
         </p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{url("/prodi")}}" class="nav-link {{ Request::segment(1) === 'prodi' ? 'active' : '' }}">
+        <i class="nav-icon fas fa-book-open"></i>
+        <p>
+            Program Studi
+        </p>
+    </a>
+</li>
 <!-- End Menu Super Admin -->
  
