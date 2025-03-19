@@ -7,5 +7,13 @@
         </p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{url("/pengguna")}}" class="nav-link {{ Request::segment(1) === 'pengguna' ? 'active' : '' }}">
+        <i class="nav-icon fas fa-user"></i>
+        <p>
+            Data Pengguna
+        </p>
+    </a>
+</li>
 <!-- End Menu Super Admin -->
  
