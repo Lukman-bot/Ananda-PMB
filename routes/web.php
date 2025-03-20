@@ -12,6 +12,7 @@ use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\ProvinsiController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\KecamatanController;
+use App\Http\Controllers\MahasiswaController;
 
 // Route For Login
 Route::get('/', [AuthController::class, 'index']);
@@ -97,6 +98,13 @@ Route::middleware(SessionAuth::class)->group(function () {
         // End Route For Kecamatan
     });
     // End Route For Agama
+
+    // Route For Mahasiswa
+    Route::group(['prefix' => 'mahasiswa'], function() {
+        Route::get('/', [MahasiswaController::class, 'index']);
+        Route::post('/listData', [MahasiswaController::class, 'listData'])->name('mahasiswa.listData');
+    });
+    // End Route For Mahasiswa
 
     // Route For Logout
     Route::post('/logout', [AuthController::class, 'logout']);

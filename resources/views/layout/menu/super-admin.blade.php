@@ -16,6 +16,14 @@
     </a>
 </li>
 <li class="nav-item">
+    <a href="{{url("/mahasiswa")}}" class="nav-link {{ Request::segment(1) === 'mahasiswa' ? 'active' : '' }}">
+        <i class="nav-icon fas fa-user"></i>
+        <p>
+            Data Mahasiswa
+        </p>
+    </a>
+</li>
+<li class="nav-item">
     <a href="{{url("/agama")}}" class="nav-link {{ Request::segment(1) === 'agama' ? 'active' : '' }}">
         <i class="nav-icon fas fa-address-card"></i>
         <p>
