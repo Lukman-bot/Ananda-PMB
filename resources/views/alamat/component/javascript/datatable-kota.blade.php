@@ -23,7 +23,7 @@
                 method: 'post',
                 data: (data) => {
                     data._token = '{{csrf_token()}}'
-                    data.id_kota = $("#fk-id-kota").val()
+                    data.id_provinsi = $("#fk-id-provinsi").val()
                 }
             },
             "columnDefs": [{

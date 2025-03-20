@@ -3,6 +3,10 @@
 <!-- Partial Component For Data Alamat -->
 @include('alamat.component.javascript.datatable-provinsi')
 @include('alamat.component.javascript.datatable-kota')
+@include('alamat.component.javascript.crud-provinsi')
+@include('alamat.component.javascript.crud-kota')
+@include('alamat.component.modal.form-provinsi')
+@include('alamat.component.modal.form-kota')
 <!-- Partial Component For Data Alamat -->
 <div class="row">
     <div class="col-lg-12">
@@ -47,7 +51,7 @@
                 <div class="card-body">
                     <div id="content-table-kota" class="d-none">
                         <div class="table-responsive">
-                            <input type="hidden" name="fk_id_kota" id="fk-id-provinsi">
+                            <input type="hidden" name="fk_id_provinsi" id="fk-id-provinsi">
                             <table class="table table-bordered" style="height: 100%" id="tb-kota">
                                 <thead>
                                     <tr>

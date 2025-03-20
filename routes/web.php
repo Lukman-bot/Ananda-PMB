@@ -70,12 +70,18 @@ Route::middleware(SessionAuth::class)->group(function () {
         // Route For Provinsi
         Route::group(['prefix' => 'provinsi'], function() {
             Route::post('/listData', [ProvinsiController::class, 'listData'])->name('provinsi.listData');
+            Route::post('/', [ProvinsiController::class, 'save']);
+            Route::get('/reqdata/{id}', [ProvinsiController::class, 'reqData']);
+            Route::post('/delete', [ProvinsiController::class, 'delete']);
         });
         // End Route For Provinsi
 
         // Route For Kota
         Route::group(['prefix' => 'kota'], function() {
             Route::post('/listData', [KotaController::class, 'listData'])->name('kota.listData');
+            Route::post('/', [KotaController::class, 'save']);
+            Route::get('/reqdata/{id}', [KotaController::class, 'reqData']);
+            Route::post('/delete', [KotaController::class, 'delete']);
         });
         // End Route For Kota
     });
