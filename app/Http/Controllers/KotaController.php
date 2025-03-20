@@ -34,6 +34,11 @@ class KotaController extends Controller
                             <i class="fa fa-trash"></i>
                         </a>
                     ';
+                    $btn .= '
+                        <a class="btn btn-sm btn-icon btn-primary" data-bs-toggle="tooltip" data-bs-placement="top" title="Lihat Provinsi"  href="'. url('alamat/kecamatan/' . $row->id_kota_kabupaten) .'">
+                            <i class="fa fa-play"></i>
+                        </a>
+                    ';
                     $btn .= '</div>';
 
                     return $btn;

@@ -16,4 +16,14 @@ class AlamatController extends Controller
 
         return view('alamat.index', $data);
     }
+
+    public function kecamatan($id)
+    {
+        $data = [
+            'title' => 'Data Alamat',
+            'id_kota' => $id
+        ];
+
+        return view('alamat.index-kecamatan', $data);
+    }
 }

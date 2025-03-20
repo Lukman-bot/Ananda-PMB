@@ -11,6 +11,7 @@ use App\Http\Controllers\AgamaController;
 use App\Http\Controllers\AlamatController;
 use App\Http\Controllers\ProvinsiController;
 use App\Http\Controllers\KotaController;
+use App\Http\Controllers\KecamatanController;
 
 // Route For Login
 Route::get('/', [AuthController::class, 'index']);
@@ -66,6 +67,7 @@ Route::middleware(SessionAuth::class)->group(function () {
     // Route For Agama
     Route::group(['prefix' => 'alamat'], function() {
         Route::get('/', [AlamatController::class, 'index']);
+        Route::get('/kecamatan/{id}', [AlamatController::class, 'kecamatan']);
 
         // Route For Provinsi
         Route::group(['prefix' => 'provinsi'], function() {
@@ -84,6 +86,12 @@ Route::middleware(SessionAuth::class)->group(function () {
             Route::post('/delete', [KotaController::class, 'delete']);
         });
         // End Route For Kota
+
+        // Route For Kecamatan
+        Route::group(['prefix' => 'kecamatan'], function() {
+            Route::post('/listData', [KecamatanController::class, 'listData'])->name('kecamatan.listData');
+        });
+        // End Route For Kecamatan
     });
     // End Route For Agama
 
