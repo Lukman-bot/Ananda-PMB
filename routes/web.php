@@ -8,6 +8,9 @@ use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProgramStudiController;
 use App\Http\Controllers\FakultasController;
 use App\Http\Controllers\AgamaController;
+use App\Http\Controllers\AlamatController;
+use App\Http\Controllers\ProvinsiController;
+use App\Http\Controllers\KotaController;
 
 // Route For Login
 Route::get('/', [AuthController::class, 'index']);
@@ -57,6 +60,24 @@ Route::middleware(SessionAuth::class)->group(function () {
         Route::post('/', [AgamaController::class, 'save'])->name('agama.save');
         Route::get('/reqdata/{id}', [AgamaController::class, 'reqData'])->name('agama.req-data');
         Route::post('/delete', [AgamaController::class, 'delete'])->name('agama.delete');
+    });
+    // End Route For Agama
+
+    // Route For Agama
+    Route::group(['prefix' => 'alamat'], function() {
+        Route::get('/', [AlamatController::class, 'index']);
+
+        // Route For Provinsi
+        Route::group(['prefix' => 'provinsi'], function() {
+            Route::post('/listData', [ProvinsiController::class, 'listData'])->name('provinsi.listData');
+        });
+        // End Route For Provinsi
+
+        // Route For Kota
+        Route::group(['prefix' => 'kota'], function() {
+            Route::post('/listData', [KotaController::class, 'listData'])->name('kota.listData');
+        });
+        // End Route For Kota
     });
     // End Route For Agama
 
