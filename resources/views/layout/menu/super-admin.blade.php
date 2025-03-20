@@ -16,6 +16,14 @@
     </a>
 </li>
 <li class="nav-item">
+    <a href="{{url("/agama")}}" class="nav-link {{ Request::segment(1) === 'agama' ? 'active' : '' }}">
+        <i class="nav-icon fas fa-address-card"></i>
+        <p>
+            Data Agama
+        </p>
+    </a>
+</li>
+<li class="nav-item">
     <a href="{{url("/prodi")}}" class="nav-link {{ Request::segment(1) === 'prodi' ? 'active' : '' }}">
         <i class="nav-icon fas fa-book-open"></i>
         <p>

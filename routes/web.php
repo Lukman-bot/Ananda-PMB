@@ -7,6 +7,7 @@ use App\Http\Controllers\DashboardController;
 use App\Http\Controllers\UsersController;
 use App\Http\Controllers\ProgramStudiController;
 use App\Http\Controllers\FakultasController;
+use App\Http\Controllers\AgamaController;
 
 // Route For Login
 Route::get('/', [AuthController::class, 'index']);
@@ -48,6 +49,13 @@ Route::middleware(SessionAuth::class)->group(function () {
         Route::post('/delete', [FakultasController::class, 'delete']);
     });
     // End Route For Fakultas
+
+    // Route For Agama
+    Route::group(['prefix' => 'agama'], function() {
+        Route::get('/', [AgamaController::class, 'index'])->name('agama.index');
+        Route::post('/listData', [AgamaController::class, 'listData'])->name('agama.listData');
+    });
+    // End Route For Agama
 
     // Route For Logout
     Route::post('/logout', [AuthController::class, 'logout']);
