@@ -2,10 +2,16 @@
 @section('content')
 <!-- Partial Component For Data Mahasiswa -->
 @include('mahasiswa.component.javascript.datatable-mahasiswa')
+@include('mahasiswa.component.javascript.crud')
 <!-- End Partial Component For Data Mahasiswa -->
 <div class="row">
     <div class="col-lg-12">
         <div id="flashdata"></div>
+        @if(session('success'))
+            <div class="alert alert-success">
+                {{ session('success') }}
+            </div>
+        @endif
     </div>
     <div class="col-lg-12">
         <div class="card">

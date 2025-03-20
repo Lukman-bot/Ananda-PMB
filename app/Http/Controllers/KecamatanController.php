@@ -84,4 +84,10 @@ class KecamatanController extends Controller
 
         return response()->json(['status' => 'oke']);
     }
+
+    public function getKecamatan($id_kota_kabupaten)
+    {
+        $kecamatan = $this->model->where('id_kota_kabupaten', $id_kota_kabupaten)->get();
+        return response()->json($kecamatan);
+    }
 }

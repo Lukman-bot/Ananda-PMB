@@ -85,6 +85,7 @@ Route::middleware(SessionAuth::class)->group(function () {
             Route::post('/', [KotaController::class, 'save']);
             Route::get('/reqdata/{id}', [KotaController::class, 'reqData']);
             Route::post('/delete', [KotaController::class, 'delete']);
+            Route::get('/get-kota/{id}', [KotaController::class, 'getKota']);
         });
         // End Route For Kota
 
@@ -94,6 +95,7 @@ Route::middleware(SessionAuth::class)->group(function () {
             Route::post('/', [KecamatanController::class, 'save']);
             Route::get('/reqdata/{id}', [KecamatanController::class, 'reqData']);
             Route::post('/delete', [KecamatanController::class, 'delete']);
+            Route::get('/get-kecamatan/{id}', [KecamatanController::class, 'getKecamatan']);
         });
         // End Route For Kecamatan
     });
@@ -101,8 +103,18 @@ Route::middleware(SessionAuth::class)->group(function () {
 
     // Route For Mahasiswa
     Route::group(['prefix' => 'mahasiswa'], function() {
-        Route::get('/', [MahasiswaController::class, 'index']);
+        Route::get('/', [MahasiswaController::class, 'index'])->name('mahasiswa.index');
         Route::post('/listData', [MahasiswaController::class, 'listData'])->name('mahasiswa.listData');
+        Route::post('/', [MahasiswaController::class, 'save']);
+
+        // Route For Form Mahasiswa
+        Route::group(['prefix' => 'form'], function() {
+            Route::get('/', [MahasiswaController::class, 'form']);
+            Route::get('/{id}', [MahasiswaController::class, 'form']);
+        });
+        // End Route For Form Mahasiswa
+
+        Route::post('/delete', [MahasiswaController::class, 'delete']);
     });
     // End Route For Mahasiswa
 

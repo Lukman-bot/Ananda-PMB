@@ -89,4 +89,10 @@ class KotaController extends Controller
 
         return response()->json(['status' => 'oke']);
     }
+
+    public function getKota($id_provinsi)
+    {
+        $kota = $this->model->where('id_provinsi', $id_provinsi)->get();
+        return response()->json($kota);
+    }
 }
