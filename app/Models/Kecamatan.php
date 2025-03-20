@@ -17,7 +17,7 @@ class Kecamatan extends Model
     {
         $this->dt = DB::table($this->table);
 
-        $this->dt->where('id_kota_kabupaten', $request->get('id_kota_kabupaten'));
+        $this->dt->where('id_kota_kabupaten', $request->get('id_kota'));
 
         return $this->dt;
     }

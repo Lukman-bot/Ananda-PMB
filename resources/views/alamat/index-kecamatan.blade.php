@@ -2,6 +2,8 @@
 @section('content')
 <!-- Partial Component For Data Kecamatan -->
 @include('alamat.component.javascript.datatable-kecamatan')
+@include('alamat.component.javascript.crud-kecamatan')
+@include('alamat.component.modal.form-kecamatan')
 <!-- End Partial Component For Data Kecamatan -->
 <div class="row">
     <div class="col-lg-8">

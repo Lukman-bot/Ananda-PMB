@@ -90,6 +90,9 @@ Route::middleware(SessionAuth::class)->group(function () {
         // Route For Kecamatan
         Route::group(['prefix' => 'kecamatan'], function() {
             Route::post('/listData', [KecamatanController::class, 'listData'])->name('kecamatan.listData');
+            Route::post('/', [KecamatanController::class, 'save']);
+            Route::get('/reqdata/{id}', [KecamatanController::class, 'reqData']);
+            Route::post('/delete', [KecamatanController::class, 'delete']);
         });
         // End Route For Kecamatan
     });
