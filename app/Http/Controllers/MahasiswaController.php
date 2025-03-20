@@ -61,7 +61,7 @@ class MahasiswaController extends Controller
         }
     }
 
-    public function form($id)
+    public function form($id = null)
     {
         $data = [
             'title' => 'Form Mahasiswa',
