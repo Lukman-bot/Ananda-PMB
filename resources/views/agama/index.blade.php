@@ -2,6 +2,8 @@
 @section('content')
 <!-- Partial Component For Data Agama -->
 @include('agama.component.javascript.datatable')
+@include('agama.component.javascript.crud')
+@include('agama.component.modal.form')
 <!-- End Partial Component For Data Agama -->
 <div class="row">
     <div class="col-lg-8">

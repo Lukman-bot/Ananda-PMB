@@ -51,4 +51,41 @@ class AgamaController extends Controller
                 ->make(true);
         }
     }
+
+    public function save(Request $request)
+    {
+        $id = $request->get('id');
+
+        // Validasi Email
+        $agamaExists = $this->model->where('nama_agama', $request->get('nama_agama'));
+        if ($id) $agamaExists->where('id_agama', '!=', $id);
+        if ($agamaExists->exists()) return response()->json(['status' => 'Agama ini sudah ada, silakan tambahkan yang lain'], 400);
+
+        $validate['nama_agama'] = $request->get('nama_agama');
+
+        if ($id == null) {
+            $validate['created_at'] = now();
+
+            $this->model->create($validate);
+            return response()->json(['status' => 'Data Berhasil Ditambahkan']);
+        } else {
+            $validate['updated_at'] = now();
+
+            $this->model->where('id_agama', $id)->update($validate);
+            return response()->json(['status' => 'Data Berhasil Diperbarui']);
+        }
+    }
+
+    public function reqData($id)
+    {
+        $data = $this->model->find($id);
+        echo json_encode($data);
+    }
+
+    public function delete(Request $request)
+    {
+        $this->model->where('id_agama', $request->get('id'))->delete();
+
+        return response()->json(['status' => 'oke']);
+    }
 }

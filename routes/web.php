@@ -54,6 +54,9 @@ Route::middleware(SessionAuth::class)->group(function () {
     Route::group(['prefix' => 'agama'], function() {
         Route::get('/', [AgamaController::class, 'index'])->name('agama.index');
         Route::post('/listData', [AgamaController::class, 'listData'])->name('agama.listData');
+        Route::post('/', [AgamaController::class, 'save'])->name('agama.save');
+        Route::get('/reqdata/{id}', [AgamaController::class, 'reqData'])->name('agama.req-data');
+        Route::post('/delete', [AgamaController::class, 'delete'])->name('agama.delete');
     });
     // End Route For Agama
 
