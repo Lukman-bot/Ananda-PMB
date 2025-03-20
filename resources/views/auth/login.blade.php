@@ -64,7 +64,8 @@
                 </form>
 
                 <p class="mb-1 mt-1">
-                    <a href="{{url("/forgot-password")}}">Lupa Password?</a>
+                    <a href="{{url("/forgot-password")}}">Lupa Password?</a> <br>
+                    <a href="{{url("/registrasi")}}">Belum punya akun?</a>
                 </p>
             </div>
             <!-- /.card-body -->

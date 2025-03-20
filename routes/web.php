@@ -13,12 +13,22 @@ use App\Http\Controllers\ProvinsiController;
 use App\Http\Controllers\KotaController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\MahasiswaController;
+use App\Http\Controllers\RegistrasiController;
 
 // Route For Login
-Route::get('/', [AuthController::class, 'index']);
+Route::get('/', [AuthController::class, 'index'])->name('login.index');
 Route::get('/login', [AuthController::class, 'index']);
 Route::post('/', [AuthController::class, 'login']);
 // End Route For Login
+
+// Route For Registrasi
+Route::group(['prefix' => 'registrasi'], function() {
+    Route::get('/', [RegistrasiController::class, 'index'])->name('registrasi.index');
+    Route::get('/get-kota/{id}', [KotaController::class, 'getKota']);
+    Route::get('/get-kecamatan/{id}', [KecamatanController::class, 'getKecamatan']);
+    Route::post('/', [RegistrasiController::class, 'save']);
+});
+// End Route For Registrasi
 
 // Routes yang memerlukan autentikasi
 Route::middleware(SessionAuth::class)->group(function () {
