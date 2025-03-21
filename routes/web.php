@@ -14,6 +14,7 @@ use App\Http\Controllers\KotaController;
 use App\Http\Controllers\KecamatanController;
 use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\RegistrasiController;
+use App\Http\Controllers\PeriodeController;
 
 // Route For Login
 Route::get('/', [AuthController::class, 'index'])->name('login.index');
@@ -127,6 +128,13 @@ Route::middleware(SessionAuth::class)->group(function () {
         Route::post('/delete', [MahasiswaController::class, 'delete']);
     });
     // End Route For Mahasiswa
+
+    // Route For Periode
+    Route::group(['prefix' => 'periode'], function() {
+        Route::get('/', [PeriodeController::class, 'index'])->name('periode.index');
+        Route::post('/listData', [PeriodeController::class, 'listData'])->name('periode.listData');
+    });
+    // End Route For Periode
 
     // Route For Logout
     Route::post('/logout', [AuthController::class, 'logout']);

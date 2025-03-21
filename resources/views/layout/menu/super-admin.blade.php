@@ -47,5 +47,13 @@
         </p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{url("/periode")}}" class="nav-link {{ Request::segment(1) === 'periode' ? 'active' : '' }}">
+        <i class="nav-icon fas fa-calendar-week"></i>
+        <p>
+            Periode
+        </p>
+    </a>
+</li>
 <!-- End Menu Super Admin -->
  
