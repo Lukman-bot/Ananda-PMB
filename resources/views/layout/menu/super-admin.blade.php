@@ -55,5 +55,13 @@
         </p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{url("/gelombang")}}" class="nav-link {{ Request::segment(1) === 'gelombang' ? 'active' : '' }}">
+        <i class="nav-icon fas fa-water"></i>
+        <p>
+            Gelombang
+        </p>
+    </a>
+</li>
 <!-- End Menu Super Admin -->
  
