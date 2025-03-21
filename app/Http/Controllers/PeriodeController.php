@@ -67,4 +67,37 @@ class PeriodeController extends Controller
                 ->make(true);
         }
     }
+
+    public function save(Request $request)
+    {
+        $id = $request->get('id');
+
+        $validate['tahun_akademik'] = $request->get('tahun_akademik');
+        $validate['semester'] = $request->get('semester');
+
+        if ($id == null) {
+            $validate['created_at'] = now();
+
+            $this->model->create($validate);
+            return response()->json(['status' => 'Data Berhasil Ditambahkan']);
+        } else {
+            $validate['updated_at'] = now();
+
+            $this->model->where('id_periode', $id)->update($validate);
+            return response()->json(['status' => 'Data Berhasil Diperbarui']);
+        }
+    }
+
+    public function reqData($id)
+    {
+        $data = $this->model->find($id);
+        echo json_encode($data);
+    }
+
+    public function delete(Request $request)
+    {
+        $this->model->where('id_periode', $request->get('id'))->delete();
+
+        return response()->json(['status' => 'oke']);
+    }
 }

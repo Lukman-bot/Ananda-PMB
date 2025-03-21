@@ -2,6 +2,8 @@
 @section('content')
 <!-- Partial Component For Data Periode -->
 @include('periode.component.javascript.datatable')
+@include('periode.component.javascript.crud')
+@include('periode.component.modal.form')
 <!-- End Partial Component For Data Periode -->
 <div class="row">
     <div class="col-lg-6">

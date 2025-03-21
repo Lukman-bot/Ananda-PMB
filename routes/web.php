@@ -133,6 +133,9 @@ Route::middleware(SessionAuth::class)->group(function () {
     Route::group(['prefix' => 'periode'], function() {
         Route::get('/', [PeriodeController::class, 'index'])->name('periode.index');
         Route::post('/listData', [PeriodeController::class, 'listData'])->name('periode.listData');
+        Route::post('/', [PeriodeController::class, 'save']);
+        Route::get('/reqdata/{id}', [PeriodeController::class, 'reqData']);
+        Route::post('/delete', [PeriodeController::class, 'delete']);
     });
     // End Route For Periode
 
