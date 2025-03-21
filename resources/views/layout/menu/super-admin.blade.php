@@ -63,5 +63,13 @@
         </p>
     </a>
 </li>
+<li class="nav-item">
+    <a href="{{url("/jenjang")}}" class="nav-link {{ Request::segment(1) === 'jenjang' ? 'active' : '' }}">
+        <i class="nav-icon fas fa-toolbox"></i>
+        <p>
+            Jenjang
+        </p>
+    </a>
+</li>
 <!-- End Menu Super Admin -->
  

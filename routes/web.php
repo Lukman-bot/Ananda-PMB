@@ -16,6 +16,7 @@ use App\Http\Controllers\MahasiswaController;
 use App\Http\Controllers\RegistrasiController;
 use App\Http\Controllers\PeriodeController;
 use App\Http\Controllers\GelombangController;
+use App\Http\Controllers\JenjangController;
 
 // Route For Login
 Route::get('/', [AuthController::class, 'index'])->name('login.index');
@@ -149,6 +150,13 @@ Route::middleware(SessionAuth::class)->group(function () {
         Route::post('/delete', [GelombangController::class, 'delete']);
     });
     // End Route For Gelombang
+
+    // Route For Jenjang
+    Route::group(['prefix' => 'jenjang'], function() {
+        Route::get('/', [JenjangController::class, 'index'])->name('jenjang.index');
+        Route::post('/listData', [JenjangController::class, 'listData'])->name('jenjang.listData');
+    });
+    // End Route For Jenjang
 
     // Route For Logout
     Route::post('/logout', [AuthController::class, 'logout']);
