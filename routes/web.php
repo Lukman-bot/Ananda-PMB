@@ -144,6 +144,9 @@ Route::middleware(SessionAuth::class)->group(function () {
     Route::group(['prefix' => 'gelombang'], function() {
         Route::get('/', [GelombangController::class, 'index'])->name('gelombang.index');
         Route::post('/listData', [GelombangController::class, 'listData'])->name('gelombang.listData');
+        Route::post('/', [GelombangController::class, 'save']);
+        Route::get('/reqdata/{id}', [GelombangController::class, 'reqData']);
+        Route::post('/delete', [GelombangController::class, 'delete']);
     });
     // End Route For Gelombang
 

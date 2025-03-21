@@ -2,6 +2,8 @@
 @section('content')
 <!-- Partial Component For Data Gelombang -->
 @include('gelombang.component.javascript.datatable')
+@include('gelombang.component.javascript.crud')
+@include('gelombang.component.modal.form')
 <!-- End Partial Component For Data Gelombang -->
 <div class="row">
     <div class="col-lg-6">

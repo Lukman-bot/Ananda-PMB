@@ -51,4 +51,41 @@ class GelombangController extends Controller
                 ->make(true);
         }
     }
+
+    public function save(Request $request)
+    {
+        $id = $request->get('id');
+
+        // Validasi Email
+        $gelombangExists = $this->model->where('nama_gelombang', $request->get('nama_gelombang'));
+        if ($id) $gelombangExists->where('id_gelombang', '!=', $id);
+        if ($gelombangExists->exists()) return response()->json(['status' => 'Nama Gelombang ini sudah ada, silakan tambahkan yang lain'], 400);
+
+        $validate['nama_gelombang'] = $request->get('nama_gelombang');
+
+        if ($id == null) {
+            $validate['created_at'] = now();
+
+            $this->model->create($validate);
+            return response()->json(['status' => 'Data Berhasil Ditambahkan']);
+        } else {
+            $validate['updated_at'] = now();
+
+            $this->model->where('id_gelombang', $id)->update($validate);
+            return response()->json(['status' => 'Data Berhasil Diperbarui']);
+        }
+    }
+
+    public function reqData($id)
+    {
+        $data = $this->model->find($id);
+        echo json_encode($data);
+    }
+
+    public function delete(Request $request)
+    {
+        $this->model->where('id_gelombang', $request->get('id'))->delete();
+
+        return response()->json(['status' => 'oke']);
+    }
 }
